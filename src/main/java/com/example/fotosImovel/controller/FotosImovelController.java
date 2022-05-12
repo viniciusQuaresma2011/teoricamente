@@ -44,9 +44,13 @@ public class FotosImovelController {
 		
 	}
 	
-	@PostMapping("/salvarFotosImovel")
-	public FotosImovel salvarFotosImovel(FotosImovel fotosImovel) {
-		return fotosImovelRepository.save(fotosImovel);
+	@PostMapping(path="/salvarFotosImovel",consumes="application/json" )
+	public ResponseEntity<FotosImovel> salvarFotosImovel(FotosImovel fotosImovel) {
+		
+		fotosImovelRepository.save(fotosImovel);
+		
+		
+		return ResponseEntity.ok(fotosImovel);
 				
 	}
 	

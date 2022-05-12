@@ -44,10 +44,12 @@ public class DocumentoImovelController {
 		
 	}
 	
-	@PostMapping("/salvarDocumentoImovel")
-	public DocumentoImovel salvarDocumentoImovel(DocumentoImovel documentoImovel) {
-		return documentoImovelRepository.save(documentoImovel);
-				
+	@PostMapping(path="/salvarDocumentoImovel",  consumes="application/json")
+	public ResponseEntity<DocumentoImovel> salvarDocumentoImovel(@RequestBody @Valid DocumentoImovel documentoImovel) {
+		
+		documentoImovelRepository.save(documentoImovel);
+		
+		return ResponseEntity.ok(documentoImovel);		
 	}
 	
 	

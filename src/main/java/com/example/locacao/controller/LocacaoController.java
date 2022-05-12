@@ -44,9 +44,12 @@ public class LocacaoController {
 		
 	}
 	
-	@PostMapping("/salvarLocacao")
-	public Locacao salvarLocacao(Locacao locacao) {
-		return locacaoRepository.save(locacao);
+	@PostMapping(path="/salvarLocacao", consumes="application/json" )
+	public ResponseEntity<Locacao> salvarLocacao(@RequestBody @Valid Locacao locacao) {
+		
+		locacaoRepository.save(locacao);
+		
+		return ResponseEntity.ok(locacao);
 				
 	}
 	

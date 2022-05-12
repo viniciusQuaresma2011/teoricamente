@@ -43,10 +43,14 @@ public class ContratoLocacaoController {
 		
 	}
 	
-	@PostMapping("/salvarContratoLocacao")
-	public ContratoLocacao salvarContratoLocacao(ContratoLocacao contratoLocacao) {
-		return contratoLocacaoRepository.save(contratoLocacao);
-				
+	@PostMapping(path="/salvarContratoLocacao", consumes="application/json")
+	public ResponseEntity<ContratoLocacao> salvarContratoLocacao(@RequestBody @Valid ContratoLocacao contratoLocacao) {
+		
+		contratoLocacaoRepository.save(contratoLocacao);
+		
+		return ResponseEntity.ok(contratoLocacao);
+		
+		
 	}
 	
 	

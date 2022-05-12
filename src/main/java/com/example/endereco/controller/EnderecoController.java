@@ -44,9 +44,12 @@ public class EnderecoController {
 		
 	}
 	
-	@PostMapping("/salvarEndereco")
-	public Endereco salvarEndereco(Endereco endereco) {
-		return enderecoRepository.save(endereco);
+	@PostMapping(path="/salvarEndereco", consumes="application/json")
+	public ResponseEntity<Endereco> salvarEndereco(@RequestBody @Valid Endereco endereco) {
+		
+		enderecoRepository.save(endereco);
+		
+		return ResponseEntity.ok(endereco);
 				
 	}
 	

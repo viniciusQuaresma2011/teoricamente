@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.example.localizacao.model.Localizacao;
 import com.example.localizacao.repository.LocalizacaoRepository;
 
@@ -44,9 +43,12 @@ public class LocalizacaoController {
 		
 	}
 	
-	@PostMapping("/salvarLocalizacao")
-	public Localizacao salvarLocalizacao(Localizacao localizacao) {
-		return localizacaoRepository.save(localizacao);
+	@PostMapping(path="/salvarLocalizacao",consumes="application/json" )
+	public ResponseEntity<Localizacao> salvarLocalizacao(@RequestBody @Valid Localizacao localizacao) {
+		
+		localizacaoRepository.save(localizacao);
+		
+		return ResponseEntity.ok(localizacao);
 				
 	}
 	

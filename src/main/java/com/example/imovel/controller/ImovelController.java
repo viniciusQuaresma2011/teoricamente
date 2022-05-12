@@ -44,9 +44,13 @@ public class ImovelController {
 		
 	}
 	
-	@PostMapping("/salvarImovel")
-	public Imovel salvarImovel(Imovel imovel) {
-		return imovelRepository.save(imovel);
+	@PostMapping(path="/salvarImovel", consumes="application/json")
+	public ResponseEntity<Imovel> salvarImovel(@RequestBody @Valid Imovel imovel) {
+		
+		imovelRepository.save(imovel);
+		
+		
+		return ResponseEntity.ok(imovel);
 				
 	}
 	

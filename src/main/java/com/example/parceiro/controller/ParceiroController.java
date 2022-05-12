@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.parceiro.model.Parceiro;
 import com.example.parceiro.repository.ParceiroRepository;
+import com.example.usuario.model.Usuario;
+import com.example.usuario.repository.UsuarioRepository;
 
 
 
@@ -29,6 +31,8 @@ public class ParceiroController {
 	@Autowired
 	private ParceiroRepository parceiroRepository;
 	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 	
 	
 	public ParceiroController(ParceiroRepository parceiroRepository) {
@@ -43,9 +47,13 @@ public class ParceiroController {
 		
 	}
 	
-	@PostMapping("/salvarParceiro")
-	public Parceiro salvarParceiro(Parceiro parceiro) {
-		return parceiroRepository.save(parceiro);
+	@PostMapping(path="/salvarParceiro" , consumes="application/json")
+	public ResponseEntity<Parceiro> salvarParceiro(@RequestBody @Valid Parceiro parceiro) {
+		//Usuario optUsuario = usuarioRepository.findById(parceiro.getIdUsuarioFK());
+		
+		parceiroRepository.save(parceiro);
+		
+		return ResponseEntity.ok(parceiro);
 				
 	}
 	
