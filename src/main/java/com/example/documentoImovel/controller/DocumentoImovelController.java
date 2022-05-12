@@ -45,8 +45,8 @@ public class DocumentoImovelController {
 	}
 	
 	@PostMapping("/salvarDocumentoImovel")
-	public void salvarDocumentoImovel(DocumentoImovel documentoImovel) {
-		documentoImovelRepository.save(documentoImovel);
+	public DocumentoImovel salvarDocumentoImovel(DocumentoImovel documentoImovel) {
+		return documentoImovelRepository.save(documentoImovel);
 				
 	}
 	

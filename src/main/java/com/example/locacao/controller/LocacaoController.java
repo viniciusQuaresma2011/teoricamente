@@ -45,8 +45,8 @@ public class LocacaoController {
 	}
 	
 	@PostMapping("/salvarLocacao")
-	public void salvarLocacao(Locacao locacao) {
-		locacaoRepository.save(locacao);
+	public Locacao salvarLocacao(Locacao locacao) {
+		return locacaoRepository.save(locacao);
 				
 	}
 	

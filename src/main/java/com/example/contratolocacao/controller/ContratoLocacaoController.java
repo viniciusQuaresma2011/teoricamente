@@ -44,8 +44,8 @@ public class ContratoLocacaoController {
 	}
 	
 	@PostMapping("/salvarContratoLocacao")
-	public void salvarContratoLocacao(ContratoLocacao contratoLocacao) {
-		contratoLocacaoRepository.save(contratoLocacao);
+	public ContratoLocacao salvarContratoLocacao(ContratoLocacao contratoLocacao) {
+		return contratoLocacaoRepository.save(contratoLocacao);
 				
 	}
 	

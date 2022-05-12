@@ -45,8 +45,8 @@ public class FotosImovelController {
 	}
 	
 	@PostMapping("/salvarFotosImovel")
-	public void salvarFotosImovel(FotosImovel fotosImovel) {
-		fotosImovelRepository.save(fotosImovel);
+	public FotosImovel salvarFotosImovel(FotosImovel fotosImovel) {
+		return fotosImovelRepository.save(fotosImovel);
 				
 	}
 	

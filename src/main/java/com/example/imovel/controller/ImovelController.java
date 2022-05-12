@@ -45,8 +45,8 @@ public class ImovelController {
 	}
 	
 	@PostMapping("/salvarImovel")
-	public void salvarImovel(Imovel imovel) {
-		imovelRepository.save(imovel);
+	public Imovel salvarImovel(Imovel imovel) {
+		return imovelRepository.save(imovel);
 				
 	}
 	

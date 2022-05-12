@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.imovel.model.Imovel;
 import com.example.parceiro.model.Parceiro;
 import com.example.parceiro.repository.ParceiroRepository;
 
@@ -45,8 +44,8 @@ public class ParceiroController {
 	}
 	
 	@PostMapping("/salvarParceiro")
-	public void salvarParceiro(Parceiro parceiro) {
-		parceiroRepository.save(parceiro);
+	public Parceiro salvarParceiro(Parceiro parceiro) {
+		return parceiroRepository.save(parceiro);
 				
 	}
 	

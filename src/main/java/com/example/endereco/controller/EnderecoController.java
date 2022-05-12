@@ -45,8 +45,8 @@ public class EnderecoController {
 	}
 	
 	@PostMapping("/salvarEndereco")
-	public void salvarEndereco(Endereco endereco) {
-		enderecoRepository.save(endereco);
+	public Endereco salvarEndereco(Endereco endereco) {
+		return enderecoRepository.save(endereco);
 				
 	}
 	

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.pessoa.model.Pessoa;
@@ -44,9 +45,29 @@ public class UsuarioController {
 		
 	}
 	
-	@PostMapping("/salvarUsuario")
-	public void salvarUsuario(Usuario usuario) {
-		usuarioRepository.save(usuario);
+	@PostMapping(path = "/salvarUsuario", consumes="application/json")
+	public ResponseEntity<Usuario> salvarUsuario( @RequestBody @Valid Usuario usuario) {
+		
+		//Usuario novoUsuario = usuarioRepository.save(usuario);
+		Pessoa p = new Pessoa();
+		p.setIdPessoa(usuario.getPessoa().getIdPessoa());
+		p.setNome(usuario.getPessoa().getNome());
+		p.setCpf(usuario.getPessoa().getCpf());
+		p.setCnpj(usuario.getPessoa().getCnpj());
+		p.setDataNascimento(usuario.getPessoa().getDataNascimento());
+		p.setTelefone(usuario.getPessoa().getTelefone());
+		
+		Usuario s = new Usuario();
+		s.setEmail(usuario.getEmail());
+		s.setSenha(usuario.getSenha());
+		s.setPessoa(p);
+		
+		usuarioRepository.save(s);
+		
+		return ResponseEntity.ok(s);
+		
+		
+		
 				
 	}
 	
@@ -74,7 +95,7 @@ public class UsuarioController {
 		
 		opcionalUsuario.setEmail(usuario.getEmail());
 		opcionalUsuario.setSenha(usuario.getSenha());
-		opcionalUsuario.setIdPessoa(usuario.getIdPessoa());
+		opcionalUsuario.setPessoa(usuario.getPessoa());
 	
 		
 		Usuario novoUsuario = usuarioRepository.save(opcionalUsuario);

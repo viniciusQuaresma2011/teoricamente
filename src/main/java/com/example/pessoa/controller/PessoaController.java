@@ -45,8 +45,8 @@ public class PessoaController {
 	}
 	
 	@PostMapping("/salvarPessoa")
-	public void salvarPessoa(Pessoa pessoa) {
-		pessoaRepository.save(pessoa);
+	public Pessoa salvarPessoa(Pessoa pessoa) {
+		return pessoaRepository.save(pessoa);
 				
 	}
 	
